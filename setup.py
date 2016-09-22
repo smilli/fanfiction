@@ -7,7 +7,7 @@ setup(
   author = 'Smitha Milli',
   author_email = 'smitha.milli@gmail.com',
   url = 'https://github.com/smilli/fanfiction',
-  download_url = 'https://github.com/smilli/fanfiction/tarball/0.1',
+  download_url = 'https://github.com/smilli/fanfiction/tarball/0.1.1',
   keywords = ['nlp'],
   classifiers = [],
   install_requires = [
