@@ -12,9 +12,9 @@ We have imposed a rate limit of a page per second in these tools in order to com
     pip install fanfiction
 
 ## Example
-    import fanfiction
-    scraper = fanfiction.Scraper()
-    scraper.scrape_story_metadata()
+    from fanfiction import Scraper
+    scraper = Scraper()
+    metadata = scraper.scrape_story_metadata(STORY_ID)
 
 # Documentation
 ```
