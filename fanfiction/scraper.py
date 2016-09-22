@@ -11,6 +11,7 @@ class Scraper:
     def __init__(self):
         self.base_url = 'http://fanfiction.net/'
         self.rate_limit = 1
+        self.parser = "html.parser"
 
     def get_genres(self, genre_text):
         genres = genre_text.split('/')
@@ -48,10 +49,10 @@ class Scraper:
         url = '{0}/s/{1}'.format(self.base_url, story_id)
         result = requests.get(url)
         html = result.content
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, self.parser)
         pre_story_links = soup.find(id='pre_story_links').find_all('a')
-        user_id = int(re.search(r"var userid = (.*);", html).groups()[0]);
-        title = re.search(r"var title = (.*);", html).groups()[0];
+        author_id = int(re.search(r"var userid = (.*);", str(soup)).groups()[0]);
+        title = re.search(r"var title = (.*);", str(soup)).groups()[0];
         title = unquote_plus(title)[1:-1]
         metadata_div = soup.find(id='profile_top')
         times = metadata_div.find_all(attrs={'data-xutime':True})
@@ -62,7 +63,7 @@ class Scraper:
             'id': story_id,
             'canon_type': pre_story_links[0].text,
             'canon': pre_story_links[1].text,
-            'author_id': user_id,
+            'author_id': author_id,
             'title': title,
             'updated': int(times[0]['data-xutime']),
             'published': int(times[1]['data-xutime']),
@@ -108,7 +109,7 @@ class Scraper:
         url = '{0}/s/{1}/{2}'.format(self.base_url, story_id, chapter_id)
         result = requests.get(url)
         html = result.content
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, self.parser)
         chapter = soup.find(class_='storytext')
         if not keep_html:
             chapter_text = chapter.get_text(' ').encode('utf8')
@@ -126,7 +127,7 @@ class Scraper:
         url = '{0}/r/{1}/{2}'.format(self.base_url, story_id, chapter_id)
         result = requests.get(url)
         html = result.content
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, self.parser)
         reviews_table = soup.find(class_='table-striped').tbody
         reviews_tds = reviews_table.find_all('td')
         reviews = []
