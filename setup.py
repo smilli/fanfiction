@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'fanfiction',
   packages = ['fanfiction'],
-  version = '0.1.0',
+  version = '0.1.1',
   description = 'Scraper for http://fanfiction.net',
   author = 'Smitha Milli',
   author_email = 'smitha.milli@gmail.com',
