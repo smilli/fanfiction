@@ -6,6 +6,8 @@ Smitha Milli and David Bamman, "Beyond Canonical Texts: A Computational Analysis
 We have imposed a rate limit of a page per second in these tools in order to comply with the fanfiction.net terms of service:
 > E. You agree not to use or launch any automated system, including without limitation, "robots," "spiders," or "offline readers," that accesses the Website in a manner that  sends more request messages to the FanFiction.Net servers in a given period of time than a human can reasonably produce in the same period by using a conventional on-line web browser.
 
+If you want fanfiction from Archive of Our Own instead, check out [this Archive of Our Own scraper](https://github.com/radiolarian/AO3Scraper).
+
 # Usage
 
 ## Install
